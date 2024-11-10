@@ -1,0 +1,7 @@
+# ROOT 아이템을 찾아 아이템 ID(ITEM_ID), 아이템 명(ITEM_NAME)을 출력
+
+SELECT ii.ITEM_ID, ii.ITEM_NAME
+FROM ITEM_INFO ii, ITEM_TREE it
+WHERE ii.ITEM_ID = it.ITEM_ID AND
+      it.PARENT_ITEM_ID is Null
+ORDER BY ii.ITEM_ID
