@@ -1,0 +1,15 @@
+# 물고기 종류 별로 가장 큰 물고기의 ID, 물고기 이름, 길이를 출력
+# 물고기의 ID 컬럼명은 ID, 이름 컬럼명은 FISH_NAME, 길이 컬럼명은 LENGTH
+# 결과는 물고기의 ID에 대해 오름차순 정렬해주세요.
+
+SELECT t1.ID, t1.FISH_NAME, t2.LENGTH
+FROM (SELECT t1.ID, t1.FISH_TYPE, t2.FISH_NAME, t1.LENGTH
+      FROM FISH_INFO t1, FISH_NAME_INFO t2
+      WHERE t1.FISH_TYPE = t2.FISH_TYPE) t1,
+     (SELECT t1.FISH_TYPE, MAX(t1.LENGTH) as LENGTH
+      FROM FISH_INFO t1, FISH_NAME_INFO t2
+      WHERE t1.FISH_TYPE = t2.FISH_TYPE
+      GROUP BY t1.FISH_TYPE) t2
+WHERE t1.FISH_TYPE = t2.FISH_TYPE AND
+      t1.LENGTH = t2.LENGTH
+ORDER BY t1.ID
