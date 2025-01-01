@@ -1,0 +1,7 @@
+-- 부모의 형질을 모두 보유한 대장균의 ID / 대장균의 형질 / 부모 대장균의 형질
+
+SELECT t2.ID, t2.GENOTYPE, t1.GENOTYPE as PARENT_GENOTYPE
+FROM ECOLI_DATA t1, ECOLI_DATA t2
+WHERE t1.ID = t2.PARENT_ID AND
+      t2.GENOTYPE & t1.GENOTYPE = t1.GENOTYPE
+ORDER BY t2.ID
