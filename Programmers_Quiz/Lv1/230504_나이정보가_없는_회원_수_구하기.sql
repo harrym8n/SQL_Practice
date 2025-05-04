@@ -1,0 +1,4 @@
+SELECT
+    COUNT(*) AS USERS
+WHERE 
+    AGE IS NULL
