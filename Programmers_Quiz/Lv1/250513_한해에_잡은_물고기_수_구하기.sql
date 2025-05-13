@@ -1,0 +1,3 @@
+SELECT count(id) as FISH_COUNT
+FROM FISH_INFO
+WHERE TIME like '2021%'
